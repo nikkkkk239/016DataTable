@@ -20,12 +20,14 @@ function Form() {
     console.log(state)
   },[state])
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="" placeholder='Name' value={name} onChange={(e)=>{setName(e.target.value)}}  id="" />
-        <input type="text" name="" placeholder='Age' value={age} onChange={(e)=>{setAge(e.target.value)}}  id="" />
-        <input type="text" name="" placeholder='Gender' value={gender} onChange={(e)=>{setGender(e.target.value)}} id="" />
-        <button type='submit'>Add</button>
+    <div >
+      <form onSubmit={handleSubmit} style={{display:'flex',flexDirection:'column',gap:'5px'}}>
+        <div style={{display:'flex',gap:'5px'}}>
+        <input type="text" name="" style={{padding:'5px'}} placeholder='Name' value={name} onChange={(e)=>{setName(e.target.value)}}  id="" />
+        <input type="text" name="" style={{padding:'5px'}} placeholder='Age' value={age} onChange={(e)=>{setAge(e.target.value)}}  id="" />
+        <input type="text" name="" style={{padding:'5px'}} placeholder='Gender' value={gender} onChange={(e)=>{setGender(e.target.value)}} id="" />
+        </div>
+        <button style={{width:'20%',marginLeft:'250px'}} type='submit'>Add</button>
       </form>
     </div>
   )

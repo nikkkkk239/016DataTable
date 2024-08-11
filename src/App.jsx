@@ -8,7 +8,7 @@ import Table from './components/Table'
 function App() {
 
   return (
-   <div>
+   <div style={{width:'100%',height:'100vh',display:'flex',flexDirection:'column',alignItems:'center',padding:'10px'}}>
       <Form/>
       <Table/>
    </div>

@@ -19,22 +19,23 @@ function Table() {
         dispatch({type:'UPDATEUSER',payload:{newName,newAge,newGender,updateId:id}})
     }
   return (
-    <div>
-        {state && <table border={'1px solid black'}>
+    <div style={{width:'100%',display:'flex',flexDirection:'column',gap:'10px'}}>
+        <input type="text" placeholder='search' style={{width:'20%',padding:'5px'}} />
+        {state!=[] && <table border={'1px solid black'} >
             <tbody>
-                <tr style={{backgroundColor:'white',color:'black'}}>
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>Age</th>
-                    <th>Actions</th>
+                <tr style={{backgroundColor:'white',color:'black',display:'flex',width:'100%'}}>
+                    <th style={{flex:'1',padding:'5px'}}>Name</th>
+                    <th style={{flex:'1',padding:'5px'}}>Gender</th>
+                    <th style={{flex:'1',padding:'5px'}}>Age</th>
+                    <th style={{flex:'1',padding:'5px'}}>Actions</th>
                 </tr>
                 {
                     state.map((s)=>{
-                        return <tr>
-                            <td>{s.editable? <input value={newName} onChange={(e)=>{setNewName(e.target.value)}}/> : s.name}</td>
-                            <td>{s.editable? <input value={newGender} onChange={(e)=>{setNewGender(e.target.value)}}/> :s.gender}</td>
-                            <td>{s.editable? <input value={newAge} onChange={(e)=>{setNewAge(e.target.value)}}/> :s.age}</td>
-                            <td>{s.editable ? 
+                        return <tr key={s.id} style={{display:'flex',width:'100%'}}>
+                            <td style={{padding:'10px',flex:'1'}}>{s.editable? <input value={newName} style={{backgroundColor:'black',color:'white',border:'none',outline:'none',width:'100%',height:'100%'}} onChange={(e)=>{setNewName(e.target.value)}}/> : s.name}</td>
+                            <td style={{padding:'10px',flex:'1'}}>{s.editable? <input value={newGender} style={{backgroundColor:'black',color:'white',border:'none',outline:'none',width:'100%',height:'100%'}} onChange={(e)=>{setNewGender(e.target.value)}}/> :s.gender}</td>
+                            <td style={{padding:'10px',flex:'1'}} >{s.editable? <input value={newAge}  style={{backgroundColor:'black',color:'white',border:'none',outline:'none',width:'100%',height:'100%'}}onChange={(e)=>{setNewAge(e.target.value)}}/> :s.age}</td>
+                            <td style={{padding:'10px',flex:'1'}}>{s.editable ? 
                                     <button onClick={()=>handleSave(s.id)}>save</button> 
                                     : <button onClick={()=>handleEdit(s.id,s.name,s.age,s.gender)}>edit</button>
                                 }
