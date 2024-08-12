@@ -6,15 +6,20 @@ function Form() {
   const [name,setName]=useState('')
   const [age,setAge]=useState('')
   const [gender,setGender]=useState('')
+
   const handleSubmit=(e)=>{
     e.preventDefault();
     if(name!='' && age!='' && gender!=''){
       dispatch({type:'ADDUSER',payload:{name,age,gender}})
+      if(state.users.length==1){
+        dispatch({type:'setPageTo1'})
+      }
       setName('')
       setAge('')
       setGender('')
     }
   }
+
   useEffect(()=>{
     localStorage.setItem('users',JSON.stringify(state))
     console.log(state)
