@@ -89,7 +89,7 @@ export const UserContextProvider=({children})=>{
             //         users:addedArr
             //     }
             case 'DELETEUSER':
-                let deletedArr=state.users.map((s)=>{
+                let deletedArr=state.users.map((s,i)=>{
                     return s.filter((sakoon)=>{
                         return sakoon.id!=action.payload.deleteId
                     })
